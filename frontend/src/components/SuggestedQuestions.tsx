@@ -1,3 +1,5 @@
+import PixelSprite from "./PixelSprite";
+
 const SUGGESTED_QUESTIONS = [
   { num: "01", icon: "🎓", label: "THESIS", text: "Tell me about his undergraduate thesis" },
   { num: "02", icon: "🌍", label: "INTERNSHIP", text: "What did he work on at Moonchild Productions?" },
@@ -17,9 +19,7 @@ export default function SuggestedQuestions({ onSelect }: SuggestedQuestionsProps
       {/* Hero */}
       <div className="text-center space-y-4">
         <div className="relative inline-block mb-2">
-          <div className="w-20 h-20 mx-auto rounded-2xl bg-gradient-to-br from-accent to-violet-500 flex items-center justify-center select-none glow-neon animate-float animate-pulse-neon">
-            <span className="font-arcade text-white text-xl">J</span>
-          </div>
+          <PixelSprite pixelSize={5} className="animate-float drop-shadow-[0_0_12px_rgba(99,102,241,0.6)]" />
           <span className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-neon-green border-2 border-white dark:border-surface-1 animate-pulse" />
         </div>
 
