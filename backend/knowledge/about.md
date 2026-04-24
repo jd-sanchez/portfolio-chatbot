@@ -1,7 +1,7 @@
 # About Jerico Dane Sanchez
 
 ## Personal Overview
-Jerico Dane Sanchez is a Computer Science student at the University of the Philippines Los Baños (UPLB), graduating in June 2026. He is based in Pateros, Metro Manila, Philippines.
+Jerico Dane Sanchez is a Computer Science student at the University of the Philippines Los Baños (UPLB), graduating in July 2026. He is based in Pateros, Metro Manila, Philippines.
 
 ## Career Goals
 Jerico is open to full-time junior and entry-level roles in:
@@ -13,14 +13,15 @@ He is available for both remote and on-site positions.
 
 ## Academic Background
 - Pursuing B.S. Computer Science at UP Los Baños
-- Expected graduation: June 2026
-- Completed his undergraduate thesis (HealPH) entirely as a solo project
+- Expected graduation: July 2026
+- Relevant coursework: Software Engineering, Artificial Intelligence, Database Systems, Operating Systems
 
 ## Notable Achievements
-- Completed a remote internship in Sweden, contributing to a real, production-level browser engine at Moonchild Productions (MCP) — working on C++ CSS parsing and browser rendering.
-- Built HealPH, his undergraduate thesis, entirely solo — a complex offline-first mobile health app with on-device AI inference (YOLOv8).
-- Contributed to open-source browser engine development as a student.
-- Currently working remotely as a Junior Developer for Stable Studio (Hong Kong).
+- Currently a Full Stack Developer at UPLB, building a Flutter wellness app for the OH WaW Program serving 11,000+ constituents — with on-device YOLOv11 meal detection and a gamification system.
+- Completed a software engineering internship in Motala, Sweden at Moonchild Productions (MCP), contributing to the Goanna rendering engine's CSS parser in a 100,000+ line C++ codebase.
+- Built Folio, a RAG-powered portfolio chatbot using LangChain, ChromaDB, and Groq — featuring local embeddings, markdown-aware chunking, and SSE streaming.
+- Built Sinehan, an AI movie recommender with a Groq + TMDb pipeline, deployed to 30+ users with automated weekly email digests via n8n.
+- Contributed to open-source browser engine development as a student at a professional engineering company.
 
 ## Personal Interests
 - Video Games
@@ -28,20 +29,12 @@ He is available for both remote and on-site positions.
 - Sports
 - Japanese language learning (currently at JLPT N5 level)
 
-## Currently Learning
-- LangChain (AI orchestration)
-- ChromaDB (vector databases)
-- n8n (workflow automation)
-- Docker (containerization)
-- TypeScript (advancing proficiency)
-
 ## Contact Information
 - Email: jtsanchez9@up.edu.ph
-- Phone: 09567622733
+- Phone: 0956 762 2733
 - Location: Pateros, Metro Manila, Philippines
 
 ## Notes for Recruiters
-- GitHub profile will be linked once projects are uploaded.
-- Jerico is actively building experience across full-stack, AI, and DevOps domains.
-- He has real-world experience contributing to a professional engineering team (MCP, Sweden) and a startup (Stable Studio, Hong Kong).
-- His thesis demonstrates the ability to design, build, and ship a full product independently.
+- Jerico has shipped real production software across mobile (Flutter), web (React/Next.js), and systems (C++) domains.
+- He has real-world experience at a professional open-source engineering team (MCP, Sweden), a startup (Stable Studio, Hong Kong), and a university-scale deployment (UPLB OH WaW, 11,000+ users).
+- He is comfortable working in async international environments and self-directing across large codebases.

@@ -5,7 +5,7 @@ from langchain_groq import ChatGroq
 from langchain.schema import HumanMessage, AIMessage, SystemMessage
 from langchain_chroma import Chroma
 
-SYSTEM_PROMPT = """You are Ask Jerico, a professional portfolio assistant for Jerico Dane Sanchez, \
+SYSTEM_PROMPT = """You are Proxy, a portfolio assistant for Jerico Dane Sanchez, \
 a Full Stack Engineer and aspiring AI Engineer based in the Philippines. \
 Your job is to help recruiters and visitors learn about Jerico's skills, \
 experience, projects, and background.
