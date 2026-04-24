@@ -1,0 +1,29 @@
+services:
+  backend:
+    build: ./backend
+    container_name: ask-jerico-backend
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    volumes:
+      - ./backend/knowledge:/app/knowledge:ro
+      - ./backend/chroma_db:/app/chroma_db
+    networks:
+      - chatbot-net
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    container_name: ask-jerico-frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    networks:
+      - chatbot-net
+    restart: unless-stopped
+
+networks:
+  chatbot-net:
+    driver: bridge
