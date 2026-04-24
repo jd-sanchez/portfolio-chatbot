@@ -166,22 +166,14 @@ export default function App() {
               Resume
             </button>
 
-            {/* Avatar + name */}
-            <div className="flex items-center gap-2.5">
-              <div className="relative">
-                <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-accent to-violet-500 flex items-center justify-center select-none glow-accent">
-                  <span className="font-arcade text-white text-xs">J</span>
-                </div>
-                <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-neon-green border-2 border-white dark:border-surface-1 animate-pulse" />
-              </div>
-              <div>
-                <h1 className="font-arcade text-[11px] text-accent text-neon leading-tight tracking-widest animate-glitch">
-                  PROXY
-                </h1>
-                <p className="font-mono text-[10px] text-muted leading-tight mt-0.5">
-                  jerico.portfolio<span className="animate-blink">_</span>
-                </p>
-              </div>
+            {/* Name */}
+            <div>
+              <h1 className="font-arcade text-[11px] text-accent text-neon leading-tight tracking-widest animate-glitch">
+                PROXY
+              </h1>
+              <p className="font-mono text-[10px] text-muted leading-tight mt-0.5">
+                jerico.portfolio<span className="animate-blink">_</span>
+              </p>
             </div>
 
             {/* Right side controls */}

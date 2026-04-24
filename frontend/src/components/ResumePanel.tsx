@@ -1,3 +1,5 @@
+import PixelSprite from "./PixelSprite";
+
 interface ResumePanelProps {
   open: boolean;
   onClose: () => void;
@@ -90,9 +92,7 @@ export default function ResumePanel({ open, onClose }: ResumePanelProps) {
           {/* Identity */}
           <div className="flex items-center gap-3">
             <div className="relative shrink-0">
-              <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-accent to-violet-500 flex items-center justify-center select-none glow-accent">
-                <span className="font-arcade text-white text-lg">J</span>
-              </div>
+              <PixelSprite pixelSize={4} className="drop-shadow-[0_0_8px_rgba(99,102,241,0.5)]" />
               <span className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-neon-green border-2 border-white dark:border-surface-1" />
             </div>
             <div>
