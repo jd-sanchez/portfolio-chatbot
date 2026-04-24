@@ -12,31 +12,27 @@ export default function MessageBubble({ message }: MessageBubbleProps) {
   const isUser = message.role === "user";
 
   return (
-    <div className={`flex items-end gap-2.5 animate-fade-up ${isUser ? "justify-end" : "justify-start"}`}>
-      {!isUser && (
-        <div className="w-7 h-7 rounded-xl bg-gradient-to-br from-accent to-violet-500 flex items-center justify-center text-white text-xs font-bold shrink-0 mb-0.5 select-none">
-          J
-        </div>
-      )}
+    <div className={`flex flex-col animate-fade-up ${isUser ? "items-end" : "items-start"}`}>
+      {/* Speaker label */}
+      <p className={`font-arcade text-[7px] tracking-widest mb-1.5 ${
+        isUser ? "text-accent/40" : "text-accent/70"
+      }`}>
+        {isUser ? "YOU" : "PROXY"}{" "}
+        <span className="opacity-60">▶</span>
+      </p>
 
-      <div
-        className={`max-w-[78%] px-4 py-3 rounded-2xl text-sm leading-relaxed ${
+      <div className={isUser ? "max-w-[70%]" : "max-w-[90%] w-full"}>
+        <div className={`px-5 py-4 text-sm leading-relaxed ${
           isUser
-            ? "bg-accent text-white rounded-br-sm shadow-lg shadow-accent/20"
-            : "glass-card text-gray-800 dark:text-gray-200 rounded-bl-sm"
-        }`}
-      >
-        <span className="whitespace-pre-wrap break-words">{message.content}</span>
-        {message.streaming && (
-          <span className="inline-block w-0.5 h-3.5 bg-accent/70 ml-0.5 animate-blink align-middle rounded-full" />
-        )}
-      </div>
-
-      {isUser && (
-        <div className="w-7 h-7 rounded-xl glass-card flex items-center justify-center text-gray-600 dark:text-gray-400 text-[10px] font-semibold shrink-0 mb-0.5 select-none">
-          You
+            ? "bg-accent text-white rounded-xl rounded-br-sm shadow-lg shadow-accent/25"
+            : "glass-card text-gray-800 dark:text-gray-200 rounded-xl rounded-tl-sm border-l-[3px] border-accent/60"
+        }`}>
+          <span className="whitespace-pre-wrap break-words">{message.content}</span>
+          {message.streaming && (
+            <span className="inline-block w-0.5 h-3.5 bg-accent ml-0.5 animate-blink align-middle" />
+          )}
         </div>
-      )}
+      </div>
     </div>
   );
 }

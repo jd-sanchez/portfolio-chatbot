@@ -21,8 +21,8 @@ export default function ChatWindow({ messages, onSuggestedQuestion }: ChatWindow
   }, [messages]);
 
   return (
-    <div className="flex-1 overflow-y-auto px-4 py-6">
-      <div className="max-w-2xl mx-auto lg:max-w-none lg:px-2 flex flex-col gap-3.5">
+    <div className="flex-1 overflow-y-auto px-5 py-6 dark:game-grid">
+      <div className="max-w-none flex flex-col gap-5 h-full">
         {messages.length === 0 && (
           <SuggestedQuestions onSelect={onSuggestedQuestion} />
         )}

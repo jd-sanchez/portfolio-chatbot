@@ -38,7 +38,7 @@ export default function App() {
   const [dark, setDark] = useState<boolean>(() => {
     const saved = localStorage.getItem("theme");
     if (saved) return saved === "dark";
-    return window.matchMedia("(prefers-color-scheme: dark)").matches;
+    return true;
   });
 
   useEffect(() => {
@@ -119,7 +119,7 @@ export default function App() {
       }
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);
-      console.error("[Ask Jerico] stream error:", msg);
+      console.error("[Proxy] stream error:", msg);
       setMessages((prev) => {
         const updated = [...prev];
         const last = updated[updated.length - 1];
@@ -152,7 +152,7 @@ export default function App() {
       {/* Main chat column */}
       <div className="flex flex-col flex-1 min-w-0">
         {/* Header */}
-        <header className="shrink-0 glass border border-b border-surface-4/30 px-4 py-3">
+        <header className="shrink-0 glass border-b border-accent/15 hud-shadow px-5 py-3.5">
           <div className="flex items-center gap-3 max-w-2xl mx-auto lg:max-w-none">
             {/* Mobile resume toggle */}
             <button
@@ -169,17 +169,17 @@ export default function App() {
             {/* Avatar + name */}
             <div className="flex items-center gap-2.5">
               <div className="relative">
-                <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-accent to-violet-500 flex items-center justify-center text-white font-bold text-sm select-none">
-                  J
+                <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-accent to-violet-500 flex items-center justify-center select-none glow-accent">
+                  <span className="font-arcade text-white text-xs">J</span>
                 </div>
-                <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-emerald-400 border-2 border-white dark:border-surface-1" />
+                <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-neon-green border-2 border-white dark:border-surface-1 animate-pulse" />
               </div>
               <div>
-                <h1 className="text-sm font-semibold text-gray-900 dark:text-white leading-tight">
-                  Ask Jerico
+                <h1 className="font-arcade text-[11px] text-accent text-neon leading-tight tracking-widest animate-glitch">
+                  PROXY
                 </h1>
-                <p className="text-[11px] text-muted leading-tight">
-                  Portfolio assistant · Full Stack & AI
+                <p className="font-mono text-[10px] text-muted leading-tight mt-0.5">
+                  jerico.portfolio<span className="animate-blink">_</span>
                 </p>
               </div>
             </div>
@@ -196,9 +196,9 @@ export default function App() {
               </button>
 
               {/* Online status */}
-              <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full glass-card">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                <span className="text-[11px] text-muted">Online</span>
+              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg glass-card border border-neon-green/20">
+                <span className="w-1.5 h-1.5 rounded-full bg-neon-green animate-pulse" />
+                <span className="font-arcade text-[7px] text-neon-green tracking-wider">ONLINE</span>
               </div>
             </div>
           </div>
