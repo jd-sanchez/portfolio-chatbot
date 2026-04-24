@@ -186,6 +186,21 @@ export default function App() {
 
             {/* Right side controls */}
             <div className="ml-auto flex items-center gap-2">
+              {/* New chat */}
+              {messages.length > 0 && (
+                <button
+                  onClick={() => { setMessages([]); setInput(""); }}
+                  disabled={streaming}
+                  aria-label="New chat"
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg glass-card border border-surface-3/50 hover:border-accent/40 hover:text-accent text-muted transition-all disabled:opacity-30"
+                >
+                  <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
+                  </svg>
+                  <span className="font-arcade text-[7px] tracking-wider">NEW CHAT</span>
+                </button>
+              )}
+
               {/* Theme toggle */}
               <button
                 onClick={() => setDark((d) => !d)}
