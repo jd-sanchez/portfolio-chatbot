@@ -1,4 +1,4 @@
-# Ask Jerico — Portfolio Chatbot
+# Proxy — Portfolio Chatbot
 
 A RAG-based conversational portfolio assistant for Jerico Dane Sanchez. Recruiters and visitors can ask natural language questions about his experience, projects, and skills — and get grounded, accurate answers.
 
@@ -22,10 +22,8 @@ cd portfolio-chatbot
 
 ### 2. Add your Groq API key
 
-Create a `.env` file in the project root:
+Create `.env` and set your Groq API key:
 
-```
-GROQ_API_KEY=your_groq_api_key_here
 ```
 
 ### 3. Start the app
