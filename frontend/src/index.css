@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Theme tokens ─────────────────────────────────────────────────────────── */
+/* RGB channels (no commas) so Tailwind opacity modifiers work: bg-surface-4/40 */
+
+:root {
+  /* Light mode — slate scale */
+  --s0: 248 250 252;   /* #f8fafc  slate-50  */
+  --s1: 241 245 249;   /* #f1f5f9  slate-100 */
+  --s2: 226 232 240;   /* #e2e8f0  slate-200 */
+  --s3: 203 213 225;   /* #cbd5e1  slate-300 */
+  --s4: 148 163 184;   /* #94a3b8  slate-400 */
+
+  --glass-bg:        rgba(255, 255, 255, 0.75);
+  --glass-border:    rgba(99, 102, 241, 0.18);
+  --card-bg:         rgba(255, 255, 255, 0.85);
+  --card-border:     rgba(99, 102, 241, 0.14);
+  --body-bg:         #f8fafc;
+  --grad-1:          rgba(99, 102, 241, 0.07);
+  --grad-2:          rgba(139, 92, 246, 0.04);
+}
+
+html.dark {
+  /* Dark mode — navy scale */
+  --s0: 3 11 24;       /* #030b18 */
+  --s1: 7 21 38;       /* #071526 */
+  --s2: 12 30 56;      /* #0c1e38 */
+  --s3: 19 40 74;      /* #13284a */
+  --s4: 28 52 92;      /* #1c345c */
+
+  --glass-bg:        rgba(7, 21, 38, 0.7);
+  --glass-border:    rgba(99, 102, 241, 0.12);
+  --card-bg:         rgba(12, 30, 56, 0.6);
+  --card-border:     rgba(99, 102, 241, 0.1);
+  --body-bg:         #030b18;
+  --grad-1:          rgba(99, 102, 241, 0.12);
+  --grad-2:          rgba(139, 92, 246, 0.08);
+}
+
+/* ─── Base ─────────────────────────────────────────────────────────────────── */
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background-color: var(--body-bg);
+    background-image:
+      radial-gradient(ellipse 80% 60% at 10% 0%,  var(--grad-1) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 90% 100%, var(--grad-2) 0%, transparent 60%);
+    background-attachment: fixed;
+    color: #1e293b;
+    font-family: "Inter", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  html.dark body {
+    color: #e2e8f0;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(99, 102, 241, 0.25);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(99, 102, 241, 0.45);
+  }
+}
+
+/* ─── Utilities ─────────────────────────────────────────────────────────────── */
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+
+  /* Glass panel (header, sidebar) */
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-color: var(--glass-border);
+  }
+
+  /* Glass card (bubbles, skill cards, input box) */
+  .glass-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--card-border);
+  }
+
+  .glow-accent {
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.25), 0 0 40px rgba(99, 102, 241, 0.1);
+  }
+}
