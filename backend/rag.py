@@ -1,3 +1,9 @@
+"""Retrieval-augmented generation for portfolio chat responses.
+
+The function in this module retrieves relevant knowledge-base chunks, injects
+them into the final user message, and streams tokens from Groq's chat model.
+"""
+
 import os
 from typing import AsyncIterator
 
@@ -5,6 +11,8 @@ from langchain_groq import ChatGroq
 from langchain.schema import HumanMessage, AIMessage, SystemMessage
 from langchain_chroma import Chroma
 
+# The assistant is intentionally constrained to retrieved portfolio context so
+# it does not invent credentials, projects, or contact details.
 SYSTEM_PROMPT = """You are Proxy, a portfolio assistant for Jerico Dane Sanchez, \
 a Full Stack Engineer and aspiring AI Engineer based in the Philippines. \
 Your job is to help recruiters and visitors learn about Jerico's skills, \
@@ -24,14 +32,17 @@ async def stream_rag_response(
     history: list[dict],
     vector_store: Chroma,
 ) -> AsyncIterator[str]:
-    # Retrieve relevant context
+    """Yield a streamed answer grounded in the most relevant Chroma chunks."""
+    # Retrieve the five closest chunks for the current question. Chroma embeds
+    # the query with the same model used during ingestion.
     docs = vector_store.as_retriever(
         search_type="similarity",
         search_kwargs={"k": 5},
     ).invoke(query)
     context = "\n\n---\n\n".join(doc.page_content for doc in docs)
 
-    # Build messages
+    # Replay prior turns before the augmented latest question so the model has
+    # conversational context without replacing document grounding.
     messages = [SystemMessage(content=SYSTEM_PROMPT)]
     for turn in history:
         role = turn.get("role", "")
@@ -47,6 +58,8 @@ async def stream_rag_response(
     )
     messages.append(HumanMessage(content=augmented_query))
 
+    # The model streams partial tokens, which the API forwards directly to the
+    # frontend through server-sent events.
     llm = ChatGroq(
         model="llama-3.3-70b-versatile",
         temperature=0.4,
