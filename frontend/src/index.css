@@ -3,39 +3,20 @@
 @tailwind utilities;
 
 /* ─── Theme tokens ─────────────────────────────────────────────────────────── */
+/* True black/white flip — no navy, no glow. */
 
 :root {
-  --s0: 248 250 252;
-  --s1: 241 245 249;
-  --s2: 226 232 240;
-  --s3: 203 213 225;
-  --s4: 148 163 184;
-
-  --glass-bg:     rgba(255, 255, 255, 0.75);
-  --glass-border: rgba(99, 102, 241, 0.22);
-  --card-bg:      rgba(255, 255, 255, 0.85);
-  --card-border:  rgba(99, 102, 241, 0.18);
-  --body-bg:      #f8fafc;
-  --grad-1:       rgba(99, 102, 241, 0.08);
-  --grad-2:       rgba(139, 92, 246, 0.05);
-  --neon-glow:    rgba(99, 102, 241, 0.3);
+  --paper: 251 251 249;
+  --paper-alt: 237 236 231;
+  --ink: 10 10 10;
+  --muted: 92 92 92;
 }
 
 html.dark {
-  --s0: 4 8 20;
-  --s1: 8 14 32;
-  --s2: 12 22 50;
-  --s3: 18 32 70;
-  --s4: 28 48 92;
-
-  --glass-bg:     rgba(8, 14, 32, 0.82);
-  --glass-border: rgba(99, 102, 241, 0.18);
-  --card-bg:      rgba(12, 22, 50, 0.72);
-  --card-border:  rgba(99, 102, 241, 0.14);
-  --body-bg:      #040814;
-  --grad-1:       rgba(99, 102, 241, 0.16);
-  --grad-2:       rgba(139, 92, 246, 0.1);
-  --neon-glow:    rgba(99, 102, 241, 0.5);
+  --paper: 10 10 10;
+  --paper-alt: 24 24 22;
+  --ink: 244 244 242;
+  --muted: 163 163 163;
 }
 
 /* ─── Base ─────────────────────────────────────────────────────────────────── */
@@ -47,46 +28,18 @@ html.dark {
   }
 
   body {
-    background-color: var(--body-bg);
-    background-image:
-      radial-gradient(ellipse 80% 60% at 10% 0%,   var(--grad-1) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 40% at 90% 100%,  var(--grad-2) 0%, transparent 60%);
-    background-attachment: fixed;
-    color: #1e293b;
-    font-family: "Inter", system-ui, sans-serif;
+    background-color: rgb(var(--paper));
+    color: rgb(var(--ink));
+    font-family: "Fragment Mono", ui-monospace, monospace;
     -webkit-font-smoothing: antialiased;
-    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
-  html.dark body {
-    color: #e2e8f0;
-  }
-
-  /* CRT scanlines — dark mode only */
-  html.dark body::after {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 3px,
-      rgba(0, 0, 0, 0.06) 3px,
-      rgba(0, 0, 0, 0.06) 4px
-    );
-    pointer-events: none;
-    z-index: 9998;
-  }
-
-  /* Scrollbar */
-  ::-webkit-scrollbar { width: 4px; }
-  ::-webkit-scrollbar-track { background: transparent; }
+  /* Scrollbar — flat, square, no glow */
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: rgb(var(--paper-alt)); }
   ::-webkit-scrollbar-thumb {
-    background: rgba(99, 102, 241, 0.3);
-    border-radius: 2px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: rgba(99, 102, 241, 0.55);
+    background: rgb(var(--ink));
+    border: 2px solid rgb(var(--paper-alt));
   }
 }
 
@@ -98,65 +51,52 @@ html.dark {
   }
   .scrollbar-hide::-webkit-scrollbar { display: none; }
 
-  .glass {
-    background: var(--glass-bg);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-color: var(--glass-border);
+  /* Flat surface, hard border. No blur, no translucency, no glow — the
+     entire visual language is opaque color + solid line. */
+  .surface {
+    background: rgb(var(--paper));
+    border: 3px solid rgb(var(--ink));
   }
 
-  .glass-card {
-    background: var(--card-bg);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--card-border);
+  .surface-alt {
+    background: rgb(var(--paper-alt));
+    border: 3px solid rgb(var(--ink));
   }
 
-  /* Dot-grid — applied to chat area in dark mode */
-  .game-grid {
-    background-image:
-      radial-gradient(circle, rgba(99, 102, 241, 0.12) 1px, transparent 1px);
-    background-size: 28px 28px;
+  /* Hard offset shadow — no blur radius. The signature brutalist "sticker"
+     shadow, replacing every soft glow/blur shadow from the old theme. */
+  .brutal-shadow {
+    box-shadow: 6px 6px 0 0 rgb(var(--ink));
   }
 
-  .glow-accent {
-    box-shadow: 0 0 20px rgba(99, 102, 241, 0.35), 0 0 50px rgba(99, 102, 241, 0.15);
+  .brutal-shadow-sm {
+    box-shadow: 4px 4px 0 0 rgb(var(--ink));
   }
 
-  .glow-neon {
-    box-shadow:
-      0 0 10px var(--neon-glow),
-      0 0 30px var(--neon-glow),
-      0 0 60px rgba(99, 102, 241, 0.12);
+  /* "Pressed into the page" — collapses the offset shadow and shifts the
+     element into its own shadow. Used on every clickable surface. */
+  .brutal-press {
+    transition: transform 60ms linear, box-shadow 60ms linear;
   }
-
-  .text-neon {
-    text-shadow:
-      0 0 8px rgba(99, 102, 241, 0.9),
-      0 0 20px rgba(99, 102, 241, 0.5),
-      0 0 40px rgba(139, 92, 246, 0.3);
+  .brutal-press:active {
+    transform: translate(4px, 4px);
+    box-shadow: none !important;
   }
-
-  .border-neon {
-    border-color: rgba(99, 102, 241, 0.5);
-    box-shadow: 0 0 8px rgba(99, 102, 241, 0.25), inset 0 0 8px rgba(99, 102, 241, 0.05);
+  .brutal-press-sm {
+    transition: transform 60ms linear, box-shadow 60ms linear;
   }
-
-  /* Neon bottom-shadow for the HUD header */
-  .hud-shadow {
-    box-shadow: 0 1px 0 rgba(99, 102, 241, 0.25), 0 4px 20px rgba(99, 102, 241, 0.08);
+  .brutal-press-sm:active {
+    transform: translate(3px, 3px);
+    box-shadow: none !important;
   }
+}
 
-  /* Quest status badges */
-  .badge-active {
-    background: rgba(74, 222, 128, 0.12);
-    border: 1px solid rgba(74, 222, 128, 0.35);
-    color: #4ade80;
-  }
-
-  .badge-done {
-    background: rgba(99, 102, 241, 0.1);
-    border: 1px solid rgba(99, 102, 241, 0.25);
-    color: #818cf8;
+/* ─── Motion ──────────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

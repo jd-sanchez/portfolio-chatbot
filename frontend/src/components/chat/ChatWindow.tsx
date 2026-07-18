@@ -1,12 +1,8 @@
 import { useEffect, useRef } from "react";
+import type { Message } from "@/types";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import MessageBubble from "./MessageBubble";
 import SuggestedQuestions from "./SuggestedQuestions";
-
-interface Message {
-  role: "user" | "assistant";
-  content: string;
-  streaming?: boolean;
-}
 
 interface ChatWindowProps {
   messages: Message[];
@@ -21,7 +17,7 @@ export default function ChatWindow({ messages, onSuggestedQuestion }: ChatWindow
   }, [messages]);
 
   return (
-    <div className="flex-1 overflow-y-auto px-5 py-6 dark:game-grid">
+    <ScrollArea className="flex-1 bg-paper" viewportClassName="px-5 py-6">
       <div className="max-w-none flex flex-col gap-5 h-full">
         {messages.length === 0 && (
           <SuggestedQuestions onSelect={onSuggestedQuestion} />
@@ -31,6 +27,6 @@ export default function ChatWindow({ messages, onSuggestedQuestion }: ChatWindow
         ))}
         <div ref={bottomRef} />
       </div>
-    </div>
+    </ScrollArea>
   );
 }
