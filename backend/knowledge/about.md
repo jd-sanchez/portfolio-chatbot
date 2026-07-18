@@ -17,9 +17,10 @@ He is available for both remote and on-site positions.
 - Relevant coursework: Software Engineering, Artificial Intelligence, Database Systems, Operating Systems
 
 ## Notable Achievements
-- Currently a Full Stack Developer at UPLB, building a Flutter wellness app for the OH WaW Program serving 11,000+ constituents — with on-device YOLOv11 meal detection and a gamification system.
+- Currently a Full Stack Developer at CINTERLabs, building a Flutter wellness app for UPLB's OH WaW Program serving 11,000+ constituents — with on-device YOLOv11 meal detection and a gamification system.
 - Completed a software engineering internship in Motala, Sweden at Moonchild Productions (MCP), contributing to the Goanna rendering engine's CSS parser in a 100,000+ line C++ codebase.
-- Built Folio, a RAG-powered portfolio chatbot using LangChain, ChromaDB, and Groq — featuring local embeddings, markdown-aware chunking, and SSE streaming.
+- Built Proxy, a RAG-powered portfolio chatbot using LangChain, ChromaDB, and Groq — featuring local embeddings, markdown-aware chunking, cosine-similarity retrieval, and SSE streaming. This is the chatbot answering questions on this site.
+- Built Rubric, a full-stack AI essay feedback platform (Next.js, FastAPI, Supabase, AWS Lambda) that turns uploaded essays into rubric-aligned, per-criterion feedback.
 - Built Sinehan, an AI movie recommender with a Groq + TMDb pipeline, deployed to 30+ users with automated weekly email digests via n8n.
 - Contributed to open-source browser engine development as a student at a professional engineering company.
 
@@ -30,11 +31,11 @@ He is available for both remote and on-site positions.
 - Japanese language learning (currently at JLPT N5 level)
 
 ## Contact Information
-- Email: jtsanchez9@up.edu.ph
-- Phone: 0956 762 2733
+- Email: sanchezjericodane@gmail.com
+- Phone: +63 956 762 2733
 - Location: Pateros, Metro Manila, Philippines
 
 ## Notes for Recruiters
 - Jerico has shipped real production software across mobile (Flutter), web (React/Next.js), and systems (C++) domains.
-- He has real-world experience at a professional open-source engineering team (MCP, Sweden), a startup (Stable Studio, Hong Kong), and a university-scale deployment (UPLB OH WaW, 11,000+ users).
+- He has real-world experience at a professional open-source engineering team (MCP, Sweden), a startup (Stable Studio, Hong Kong), and CINTERLabs, where he builds a wellness platform for UPLB's OH WaW program (11,000+ users).
 - He is comfortable working in async international environments and self-directing across large codebases.

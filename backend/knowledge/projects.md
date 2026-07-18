@@ -1,5 +1,27 @@
 # Jerico Dane Sanchez — Projects
 
+## Rubric — AI-Powered Essay Feedback Platform
+**Timeline:** May 2026
+**Type:** Full-Stack AI Application
+
+### Overview
+A full-stack platform that automates rubric-based essay feedback for teachers and students, converting uploaded essays into structured, per-criterion evaluations.
+
+### Tech Stack
+- Next.js (frontend)
+- FastAPI (backend)
+- Supabase (database/auth)
+- AWS S3 + Lambda (async PDF pipeline)
+- PyPDF2 (PDF parsing)
+- Groq API — Llama 3.3 70B (feedback generation)
+
+### Key Features
+- Async PDF pipeline triggered by S3 ObjectCreated events, processed via AWS Lambda and PyPDF2, then scored by Llama 3.3 70B through Groq.
+- Feedback views with per-criterion scores, progress indicators, summaries, and status tracking.
+- Turns raw essay submissions into actionable, rubric-aligned evaluations.
+
+---
+
 ## Sinehan — AI Movie Recommendation Web App
 **Timeline:** March 2026
 **Type:** Full-Stack AI Application
@@ -20,7 +42,7 @@ A full-stack AI movie recommender that generates mood-based picks with Filipino-
 
 ---
 
-## Folio — RAG-Powered Portfolio Chatbot
+## Proxy — RAG-Powered Portfolio Chatbot
 **Timeline:** February 2026
 **Type:** AI / RAG Application
 
@@ -44,16 +66,16 @@ A RAG-based conversational portfolio assistant that lets recruiters and visitors
 
 ---
 
-## OH WaW Wellness App — UPLB
-**Timeline:** September 2025 – Present
+## OH WaW Wellness App — CINTERLabs
+**Timeline:** September 2025 – May 2026
 **Type:** Full-Stack Mobile Application (Work)
 
 ### Overview
-A Flutter wellness tracking app for the University of the Philippines Los Baños OH WaW Program, targeting 11,000+ UPLB constituents.
+A Flutter wellness tracking app built at CINTERLabs for the University of the Philippines Los Baños' OH WaW Program, targeting 11,000+ UPLB constituents. Built on an offline-first architecture: data is written to SQLite locally first, then synced to an Express.js/MongoDB backend on connectivity.
 
 ### Tech Stack
-- Flutter + Dart (mobile frontend)
-- Express.js / Node.js (24 API endpoints)
+- Flutter + Dart (mobile frontend, offline-first via local SQLite)
+- Express.js / Node.js (API, synced from local storage on connectivity)
 - MongoDB (database)
 - YOLOv11 INT8 (on-device meal detection — 95+ Filipino food classes)
 - Google OAuth + JWT authentication (role-based: constituent and admin flows)
