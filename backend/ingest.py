@@ -16,6 +16,12 @@ KNOWLEDGE_DIR = Path(__file__).parent / "knowledge"
 CHROMA_DIR = Path(__file__).parent / "chroma_db"
 COLLECTION_NAME = "portfolio"
 
+# Chroma's HNSW index defaults to squared-L2 distance. Retrieval quality for
+# short text embeddings is normally judged on cosine similarity, so the space
+# must be set explicitly at collection-creation time — it cannot be changed
+# on an existing collection, only at rebuild.
+COLLECTION_METADATA = {"hnsw:space": "cosine"}
+
 
 def load_and_split_documents():
     """Load markdown knowledge files and split them into retrieval-sized chunks."""
@@ -51,6 +57,7 @@ def build_vector_store() -> Chroma:
         documents=chunks,
         embedding=embeddings,
         collection_name=COLLECTION_NAME,
+        collection_metadata=COLLECTION_METADATA,
         persist_directory=str(CHROMA_DIR),
     )
 
@@ -68,6 +75,7 @@ def get_or_create_vector_store() -> Chroma:
         return Chroma(
             collection_name=COLLECTION_NAME,
             embedding_function=embeddings,
+            collection_metadata=COLLECTION_METADATA,
             persist_directory=str(CHROMA_DIR),
         )
 
