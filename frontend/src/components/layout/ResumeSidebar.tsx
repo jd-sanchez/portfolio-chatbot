@@ -5,7 +5,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { CloseIcon, MailIcon, PhoneIcon, DownloadIcon } from "@/components/icons";
+import { CloseIcon, MailIcon, DownloadIcon } from "@/components/icons";
 
 interface ResumeSidebarProps {
   open: boolean;
@@ -195,26 +195,28 @@ function ResumeContact() {
         <MailIcon className="w-3 h-3 shrink-0" />
         sanchezjericodane@gmail.com
       </a>
-      <div className="flex items-center gap-2 text-xs text-ink-muted">
-        <PhoneIcon className="w-3 h-3 shrink-0" />
-        +63 956 762 2733
-      </div>
     </div>
   );
 }
 
 function ResumeFooter() {
   return (
-    <div className="shrink-0 px-5 py-4 border-t-3 border-ink">
+    <div className="shrink-0 px-5 py-4 border-t-3 border-ink flex gap-2">
       <a
         href="/resume.pdf"
         target="_blank"
         rel="noopener noreferrer"
+        className="brutal-press flex-1 flex items-center justify-center gap-2 py-2.5 border-3 border-ink bg-accent text-accent-ink brutal-shadow-sm cursor-pointer"
+      >
+        <span className="font-mono text-2xs tracking-wide uppercase">View Resume</span>
+      </a>
+      <a
+        href="/resume.pdf"
         download
-        className="brutal-press flex items-center justify-center gap-2 w-full py-2.5 border-3 border-ink bg-accent text-accent-ink brutal-shadow-sm cursor-pointer"
+        aria-label="Download resume"
+        className="brutal-press flex items-center justify-center px-3.5 border-3 border-ink bg-paper text-ink brutal-shadow-sm cursor-pointer"
       >
         <DownloadIcon className="w-3.5 h-3.5" />
-        <span className="font-mono text-2xs tracking-wide uppercase">Download Resume</span>
       </a>
     </div>
   );
